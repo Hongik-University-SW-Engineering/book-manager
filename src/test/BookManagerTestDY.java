@@ -66,4 +66,16 @@ class BookManagerTestDY {
         bm.searchBook(1);
     }
 
+    @Test
+    public void 테스트5() {
+        // 책 추가 테스트
+        bm.addBook(1, "자바 기초", "Jane", 2021);
+
+        // 중복 id 테스트
+        bm.addBook(1, "중복 책", "중복 책", 2021);
+
+        // 책 검색 테스트
+        bm.searchBook(1);
+    }
+
 }
