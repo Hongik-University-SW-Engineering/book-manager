@@ -23,12 +23,14 @@ pipeline {
         }
         stage('Test') {
             steps {
-                // JUnit 5 콘솔 실행기 JAR 파일 경로
-                def junitJar = "./lib/junit-platform-console-standalone-1.10.0.jar"
-                def classpath = "classes:${junitJar}"
+                script {
+                    // JUnit 5 콘솔 실행기 JAR 파일 경로
+                    def junitJar = "./lib/junit-platform-console-standalone-1.10.0.jar"
+                    def classpath = "classes:${junitJar}"
 
-                // JUnit 5 테스트 실행
-                sh "java -cp \"${classpath}\" org.junit.platform.console.ConsoleLauncher --scan-classpath --include-classname '^.*Test.*$' > test_results.txt"
+                    // JUnit 5 테스트 실행
+                    sh 'java -cp "${classpath}" org.junit.platform.console.ConsoleLauncher --scan-classpath --include-classname \'^.*Test.*$\' > test_results.txt'
+                }
             }
         }
     }
