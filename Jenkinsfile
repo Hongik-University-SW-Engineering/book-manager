@@ -1,8 +1,8 @@
 pipeline {
     agent any
     environment {
-        LANG = 'en_US.UTF-8'
-        LC_ALL = 'en_US.UTF-8'
+        LANG = 'ko_KR.UTF-8'
+        LC_ALL = 'ko_KR.UTF-8'
         JAVA_TOOL_OPTIONS = '-Dfile.encoding=UTF-8'
     }
     stages {
