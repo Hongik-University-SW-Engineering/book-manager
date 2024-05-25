@@ -29,9 +29,7 @@ pipeline {
                     def classpath = "classes:${junitJar}"
 
                     // JUnit 5 테스트 실행
-                    sh '''#!/bin/bash
-                         java -cp ${classpath} org.junit.platform.console.ConsoleLauncher --select-class src/test/BookManagerTestDY --select-class src/test/BookManagerTest_MJ > test_results.txt
-                    '''
+                    sh 'java -Dfile.encoding=UTF-8 -cp lib/junit-platform-console-standalone-1.10.0.jar:classes org.junit.platform.console.ConsoleLauncher --scan-classpath --include-classname \'^.*Test.*$\' > test_results.txt'
                 }
             }
         }
