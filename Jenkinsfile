@@ -33,8 +33,8 @@ pipeline {
                     def junitJar = './lib/junit-platform-console-standalone-1.10.0.jar'
                     def classpath = "classes:${junitJar}"
 
-                    // JUnit 5 테스트 실행
-                    sh 'java -Dfile.encoding=UTF-8 -cp lib/junit-platform-console-standalone-1.10.0.jar:classes org.junit.platform.console.ConsoleLauncher --scan-classpath --include-classname '^.*Test.*$' | iconv -f UTF-8 -t UTF-8 > test_results.txt'
+                    // JUnit 5 테스트 실행 및 결과를 UTF-8로 인코딩하여 저장
+                    sh 'java -Dfile.encoding=UTF-8 -cp lib/junit-platform-console-standalone-1.10.0.jar:classes org.junit.platform.console.ConsoleLauncher --scan-classpath --include-classname \'^.*Test.*$\' | iconv -f UTF-8 -t UTF-8 > test_results.txt'
                 }
             }
         }
