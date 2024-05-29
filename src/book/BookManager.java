@@ -7,7 +7,7 @@ public class BookManager {
     private final List<Book> books = new ArrayList<>();
 
     public Book addBook(int id, String name, String author, int publish) {
-        if (search_bs(id) != null) {
+        if (searchBook(id) != null) {
             System.out.println("해당 ID(" + id + ") 는 이미 존재합니다.");
             return null;
         } else {
@@ -32,26 +32,6 @@ public class BookManager {
             }
         }
         System.out.println("해당 ID(" + id + ")의 도서를 찾을 수 없습니다.");
-        return null;
-    }
-
-    public Book search_bs(int id) {
-        int left = 0;
-        int right = books.size() - 1;
-
-        while (left <= right) {
-            int mid = (left + right) / 2;
-            Book midBook = books.get(mid);
-
-            if (midBook.getId() == id) {
-                return midBook;
-            } else if (midBook.getId() < id) {
-                left = mid + 1;
-            } else {
-                right = mid - 1;
-            }
-        }
-
         return null;
     }
 

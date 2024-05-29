@@ -85,16 +85,4 @@ class BookManagerTestDY {
         bm.searchBook(1);
     }
 
-    @Test
-    public void 이분탐색() {
-        // given
-        Book book = bm.addBook(1, "자바 기초", "Jane", 2021);
-
-        // when
-        Book bookFound = bm.search_bs(book.getId());
-        // then
-
-        Assertions.assertEquals(1, bookFound.getId());
-    }
-
 }
