@@ -1,6 +1,8 @@
 package test;
 
+import book.Book;
 import book.BookManager;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -32,9 +34,14 @@ class BookManagerTestDY {
         bm.addBook(3, "분산 컴퓨팅", "Yoon", 2024);
 
         // 책 검색 테스트
-        bm.searchBook(1);
-        bm.searchBook(2);
-        bm.searchBook(3);
+        Book book1 = bm.searchBook(1);
+        Assertions.assertEquals(1, book1.getId());
+
+        Book book2 = bm.searchBook(2);
+        Assertions.assertEquals(2, book2.getId());
+
+        Book book3 = bm.searchBook(3);
+        Assertions.assertEquals(3, book3.getId());
     }
 
     @Test

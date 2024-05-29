@@ -1,6 +1,6 @@
 package book;
 
-class Book {
+public class Book implements Comparable<Book>{
     private int id;
     private String name;
     private String author;
@@ -21,5 +21,14 @@ class Book {
                 ", 저자:'" + author + '\'' +
                 ", 출판년도:" + publish +
                 '}';
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    @Override
+    public int compareTo(Book other) {
+        return Integer.compare(this.id, other.id);
     }
 }
