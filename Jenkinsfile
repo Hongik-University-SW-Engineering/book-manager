@@ -21,8 +21,10 @@ pipeline {
                         sh 'curl -o lib/junit-platform-console-standalone-1.10.0.jar https://repo1.maven.org/maven2/org/junit/platform/junit-platform-console-standalone/1.10.0/junit-platform-console-standalone-1.10.0.jar'
                     } else {
                         bat '''
+
                         mkdir lib
                         curl -o lib\\junit-platform-console-standalone-1.10.0.jar https://repo1.maven.org/maven2/org/junit/platform/junit-platform-console-standalone/1.10.0/junit-platform-console-standalone-1.10.0.jar
+
                         '''
                     }
                 }
@@ -40,9 +42,11 @@ pipeline {
                     // Windows
                     } else{
                         bat '''
-                        set JUNIT_PATH=lib\\junit-platform-console-standalone-1.10.0.jar
+
+                        set "JUNIT_PATH=lib\\junit-platform-console-standalone-1.10.0.jar"
                         javac -encoding UTF-8 -d classes "src\\book\\*.java"
                         javac -encoding UTF-8 -d classes -cp "%JUNIT_PATH%;classes;" "src\\test\\*.java"
+
                         '''
                     }
                 }
@@ -60,8 +64,10 @@ pipeline {
                         sh 'java -Dfile.encoding=UTF-8 -cp lib/junit-platform-console-standalone-1.10.0.jar:classes org.junit.platform.console.ConsoleLauncher --scan-classpath --include-classname \'^.*Test.*$\' | iconv -f UTF-8 -t UTF-8 > test_results.txt'
                     } else {
                     bat '''
-                    set JUNIT_PATH=lib\\junit-platform-console-standalone-1.10.0.jar
-                    java -cp "%JUNIT_PATH%;classes" org.junit.platform.console.ConsoleLauncher --scan-class-path > test_result.txt
+
+                    set JUNIT_PATH="lib\\junit-platform-console-standalone-1.10.0.jar"
+                    java -cp "%JUNIT_PATH%;classes" org.junit.platform.console.ConsoleLauncher --scan-class-path > test_results.txt
+
                     '''
                     }
                 }
