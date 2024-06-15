@@ -67,7 +67,7 @@ pipeline {
                     bat '''
 
                     set JUNIT_PATH="lib\\junit-platform-console-standalone-1.10.0.jar"
-                    java -cp "%JUNIT_PATH%;classes" org.junit.platform.console.ConsoleLauncher --scan-classpath > test_results.txt
+                    java -cp "%JUNIT_PATH%;classes" org.junit.platform.console.ConsoleLauncher --scan-class-path=classes > test_results.txt
                     '''
                     }
                 }
