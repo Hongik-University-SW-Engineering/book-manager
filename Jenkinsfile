@@ -42,6 +42,7 @@ pipeline {
                     javac -encoding UTF-8 -d classes "src\\book\\*.java"
                     javac -encoding UTF-8 -d classes -cp "%JUNIT_PATH%;classes;" "src\\test\\*.java"
                     '''
+                }
             }
         }
         stage('Test') {
@@ -54,11 +55,12 @@ pipeline {
 
                         // JUnit 5 테스트 실행 및 결과를 UTF-8로 인코딩하여 저장
                         sh 'java -Dfile.encoding=UTF-8 -cp lib/junit-platform-console-standalone-1.10.0.jar:classes org.junit.platform.console.ConsoleLauncher --scan-classpath --include-classname \'^.*Test.*$\' | iconv -f UTF-8 -t UTF-8 > test_results.txt'
-                } else {
+                    } else {
                     bat '''
                     set JUNIT_PATH=lib\\junit-platform-console-standalone-1.10.0.jar
                     java -cp "%JUNIT_PATH%;classes" org.junit.platform.console.ConsoleLauncher --scan-class-path > test_result.txt
                     '''
+                    }
                 }
             }
         }
