@@ -42,13 +42,10 @@ pipeline {
                     // Windows
                     } else{
                         bat '''
-
-                        mkdir classes
-                        set JUNIT_PATH="lib\\junit-platform-console-standalone-1.10.0.jar"
+                        set JUNIT_PATH=lib\\junit-platform-console-standalone-1.10.0.jar
                         javac -encoding UTF-8 -d classes "src\\book\\*.java"
                         javac -encoding UTF-8 -d classes -cp "%JUNIT_PATH%;classes;" "src\\test\\*.java"
                         dir classes
-
                         '''
                     }
                 }
@@ -67,7 +64,7 @@ pipeline {
                     } else {
                     bat '''
 
-                    set JUNIT_PATH="lib\\junit-platform-console-standalone-1.10.0.jar"
+                    set JUNIT_PATH=lib\\junit-platform-console-standalone-1.10.0.jar
                     java -cp "%JUNIT_PATH%;classes" org.junit.platform.console.ConsoleLauncher --scan-class-path=classes > test_results.txt
                     '''
                     }
