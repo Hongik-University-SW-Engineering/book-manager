@@ -43,7 +43,7 @@ pipeline {
                     } else{
                         bat '''
 
-                        set "JUNIT_PATH=lib\\junit-platform-console-standalone-1.10.0.jar"
+                        set JUNIT_PATH="lib\\junit-platform-console-standalone-1.10.0.jar"
                         javac -encoding UTF-8 -d classes "src\\book\\*.java"
                         javac -encoding UTF-8 -d classes -cp "%JUNIT_PATH%;classes;" "src\\test\\*.java"
 
