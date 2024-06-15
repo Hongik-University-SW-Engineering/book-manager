@@ -14,34 +14,37 @@ pipeline {
         }
         stage('Download Dependencies') {
             steps {
-                if(isUnix()){
-                    // JUnit 5 콘솔 실행기 JAR 파일 다운로드
-                    sh 'mkdir -p lib'
-                    sh 'curl -o lib/junit-platform-console-standalone-1.10.0.jar https://repo1.maven.org/maven2/org/junit/platform/junit-platform-console-standalone/1.10.0/junit-platform-console-standalone-1.10.0.jar'
-                } else {
-                    bat '''
-                    mkdir lib
-                    curl -o lib\\junit-platform-console-standalone-1.10.0.jar https://repo1.maven.org/maven2/org/junit/platform/junit-platform-console-standalone/1.10.0/junit-platform-console-standalone-1.10.0.jar
-                    '''
+                script{
+                    if(isUnix()){
+                        // JUnit 5 콘솔 실행기 JAR 파일 다운로드
+                        sh 'mkdir -p lib'
+                        sh 'curl -o lib/junit-platform-console-standalone-1.10.0.jar https://repo1.maven.org/maven2/org/junit/platform/junit-platform-console-standalone/1.10.0/junit-platform-console-standalone-1.10.0.jar'
+                    } else {
+                        bat '''
+                        mkdir lib
+                        curl -o lib\\junit-platform-console-standalone-1.10.0.jar https://repo1.maven.org/maven2/org/junit/platform/junit-platform-console-standalone/1.10.0/junit-platform-console-standalone-1.10.0.jar
+                        '''
+                    }
                 }
-
             }
         }
         stage('Build') {
             steps {
-                // MacOS
-                if(isUnix()) {
-                    // Java 파일들을 컴파일하여 생성된 클래스 파일을 classes 디렉토리에 저장
-                    sh 'mkdir -p classes'
-                    sh 'javac -encoding UTF-8 -cp lib/junit-platform-console-standalone-1.10.0.jar -d classes src/book/*.java src/test/*.java'
+                script{
+                    // MacOS
+                    if(isUnix()) {
+                        // Java 파일들을 컴파일하여 생성된 클래스 파일을 classes 디렉토리에 저장
+                        sh 'mkdir -p classes'
+                        sh 'javac -encoding UTF-8 -cp lib/junit-platform-console-standalone-1.10.0.jar -d classes src/book/*.java src/test/*.java'
 
-                // Windows
-                } else{
-                    bat '''
-                    set JUNIT_PATH=lib\\junit-platform-console-standalone-1.10.0.jar
-                    javac -encoding UTF-8 -d classes "src\\book\\*.java"
-                    javac -encoding UTF-8 -d classes -cp "%JUNIT_PATH%;classes;" "src\\test\\*.java"
-                    '''
+                    // Windows
+                    } else{
+                        bat '''
+                        set JUNIT_PATH=lib\\junit-platform-console-standalone-1.10.0.jar
+                        javac -encoding UTF-8 -d classes "src\\book\\*.java"
+                        javac -encoding UTF-8 -d classes -cp "%JUNIT_PATH%;classes;" "src\\test\\*.java"
+                        '''
+                    }
                 }
             }
         }
