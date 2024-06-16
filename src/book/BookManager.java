@@ -4,8 +4,19 @@ import java.util.*;
 
 public class BookManager {
 
+    /**
+     *
+     */
     private final List<Book> books = new ArrayList<>();
 
+    /**
+     * 도서 추가하기
+     * @param id
+     * @param name
+     * @param author
+     * @param publish
+     * @return
+     */
     public Book addBook(int id, String name, String author, int publish) {
         if (searchBook(id) != null) {
             System.out.println("해당 ID(" + id + ") 는 이미 존재합니다.");
@@ -19,10 +30,18 @@ public class BookManager {
         }
     }
 
+    /**
+     * 도서 찾기에 대한 함수. 파라미터 없음
+     */
     public void searchBook() {
         System.out.println("검색된 도서가 없습니다.");
     }
 
+    /**
+     * 도서 탐색하기에 대한 함수
+      * @param id
+     * @return
+     */
     public Book searchBook(int id) {
         for (Book book : books) {
             if (book.getId() == id) {
@@ -35,6 +54,11 @@ public class BookManager {
         return null;
     }
 
+    /**
+     * 이진 탐색
+     * @param id
+     * @return
+     */
     public Book search_bs(int id) {
         int left = 0;
         int right = books.size() - 1;
@@ -55,6 +79,10 @@ public class BookManager {
         return null;
     }
 
+    /**
+     * id에 맞는 도서 삭제하기
+     * @param id
+     */
     public void removeBook(int id) {
         Book removedBook = books.get(id);
         books.remove(id);
