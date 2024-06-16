@@ -37,10 +37,10 @@ class BookManagerTest_MJ {
     public void test2() {
         System.out.println("TEST2 START!");
         // given
-        bm.addBook(1, "programming", "Kim", 2022);
-        bm.addBook(3, "distributed computing", "Yoon", 2024);
 
         // when
+        bm.addBook(1, "programming", "Kim", 2022);
+        bm.addBook(3, "distributed computing", "Yoon", 2024);
 
         // then
         bm.searchBook(3);
@@ -62,6 +62,20 @@ class BookManagerTest_MJ {
         // then
         bm.searchBook(1);
         bm.searchBook(2);
+    }
+
+    @Test
+    public void test4() {
+        // given
+        bm.searchBook();
+
+        // when
+        bm.addBook(1, "C-Programming", "Bob", 1999);
+        bm.addBook(2, "Operating System", "ALICE", 1999);
+        bm.removeBook(2);
+
+        // then
+        bm.searchBook();
     }
 
 }
