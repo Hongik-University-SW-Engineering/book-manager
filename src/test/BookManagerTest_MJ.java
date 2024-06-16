@@ -67,6 +67,7 @@ class BookManagerTest_MJ {
     @Test
     public void test4() {
         // given
+        System.out.println("TEST4 START!");
         bm.searchBook();
 
         // when
