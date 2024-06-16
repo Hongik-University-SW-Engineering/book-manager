@@ -85,4 +85,13 @@ class BookManagerTestDY {
         bm.searchBook(1);
     }
 
+    @Test
+    public void search_bs_test() {
+        bm.addBook(3, "The Bitcoin", "Satoshi Nakamoto", 2009);
+
+        Book book = bm.search_bs(3);
+
+        Assertions.assertEquals(3, book.getId());
+    }
+
 }
