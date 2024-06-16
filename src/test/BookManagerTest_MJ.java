@@ -19,6 +19,7 @@ class BookManagerTest_MJ {
     @AfterEach
     public void cleanUp(){
         System.out.println("Sequence of Testing is not be guaranteed\n");
+        System.out.println("After TEST, CLEAN UP !");
     }
 
     @Test
