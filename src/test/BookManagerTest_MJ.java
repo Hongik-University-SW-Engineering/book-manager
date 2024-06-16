@@ -72,7 +72,7 @@ class BookManagerTest_MJ {
         // when
         bm.addBook(1, "C-Programming", "Bob", 1999);
         bm.addBook(2, "Operating System", "ALICE", 1999);
-        bm.removeBook(2);
+        bm.removeBook(1);
 
         // then
         bm.searchBook();
