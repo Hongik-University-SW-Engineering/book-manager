@@ -19,9 +19,10 @@ public class BookManager {
      * 이미 존재하는 ID인 경우, 해당 ID가 이미 존재한다는 메시지 출력.
      * Add a book to the book list.
      * If the ID already exists, print a message that the ID already exists.
-     * @param id 책 ID / Book ID
-     * @param name 책 이름 / Book name
-     * @param author 저자 / Author
+     *
+     * @param id      책 ID / Book ID
+     * @param name    책 이름 / Book name
+     * @param author  저자 / Author
      * @param publish 출판년도 / Publish year
      * @return 새로 추가된 책 객체, null / Newly added book object, null
      */
@@ -51,6 +52,7 @@ public class BookManager {
      * 검색한 책이 존재하면 해당 책 객체를 반환, 그렇지 않으면 null을 반환.
      * Search for a book from the book list.
      * Return the book object if found, or return null.
+     *
      * @param id 찾을 책 ID / Book ID to search
      * @return 책 객체, null / Book object, null
      */
@@ -69,6 +71,7 @@ public class BookManager {
     /**
      * 이진 탐색을 이용한 책 검색.
      * Search for a book using binary search.
+     *
      * @param id 찾을 책 ID / Book ID to search
      * @return 책 객체, null / Book object, null
      */
@@ -95,6 +98,7 @@ public class BookManager {
     /**
      * id에 맞는 도서 삭제.
      * Remove a book from the book list.
+     *
      * @param id 삭제 할 책 ID / Book ID to be removed
      */
     public void removeBook(int id) {

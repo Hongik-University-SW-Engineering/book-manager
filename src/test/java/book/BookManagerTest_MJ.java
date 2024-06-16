@@ -1,12 +1,11 @@
-package test;
+package book;
 
-import book.BookManager;
-//import org.junit.Before;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class BookManagerTest_MJ {
+
+public class BookManagerTest_MJ {
 
     private BookManager bm;
 
