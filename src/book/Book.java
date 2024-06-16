@@ -1,5 +1,9 @@
 package book;
 
+/**
+ * 책 정보를 담는 클래스
+ * A class that contains book information.
+ */
 public class Book implements Comparable<Book>{
     private int id;
     private String name;
@@ -8,10 +12,11 @@ public class Book implements Comparable<Book>{
 
     /**
      * 생성자
-     * @param id
-     * @param name
-     * @param author
-     * @param publish
+     * Constructor
+     * @param id 책 ID / Book ID
+     * @param name 책 이름 / Book name
+     * @param author 저자 / Author
+     * @param publish 출판년도 / Publish year
      */
     public Book(int id, String name, String author, int publish) {
         this.id = id;
@@ -22,8 +27,10 @@ public class Book implements Comparable<Book>{
 
 
     /**
-     * toString overriding 하여 다형성 구현.
-     * @return
+     * Override toString()
+     * 책의 정보를 출력.
+     * Print the book information.
+     * @return 책 정보 / Book information
      */
     @Override
     public String toString() {
@@ -37,17 +44,18 @@ public class Book implements Comparable<Book>{
 
 
     /**
-     * getter 함수.
-     * @return
+     * Getter.
+     * @return 책 ID / Book ID
      */
     public int getId() {
         return id;
     }
 
     /**
-     * 비교하기
+     * 두 책을 비교.
+     * Comparing two books.
      * @param other the object to be compared.
-     * @return
+     * @return the value 0 if this book is equal to the argument book;
      */
     @Override
     public int compareTo(Book other) {
