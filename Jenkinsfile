@@ -37,14 +37,14 @@ pipeline {
                     if(isUnix()) {
                         // Java 파일들을 컴파일하여 생성된 클래스 파일을 classes 디렉토리에 저장
                         sh 'mkdir -p classes'
-                        sh 'javac -encoding UTF-8 -cp lib/junit-platform-console-standalone-1.10.0.jar -d classes src/book/*.java src/test/*.java'
+                        sh 'javac -encoding UTF-8 -cp lib/junit-platform-console-standalone-1.10.0.jar -d classes src/main/java/book/*.java src/test/java/book/*.java'
 
                     // Windows
                     } else{
                         bat '''
                         set JUNIT_PATH=lib\\junit-platform-console-standalone-1.10.0.jar
-                        javac -encoding UTF-8 -d classes src\\book\\*.java
-                        javac -encoding UTF-8 -d classes -cp "%JUNIT_PATH%;classes" src\\test\\*.java
+                        javac -encoding UTF-8 -d classes src\\main\\java\\book\\*.java
+                        javac -encoding UTF-8 -d classes -cp "%JUNIT_PATH%;classes" src\\test\\java\\book\\*.java
                         dir classes
                         '''
                     }
